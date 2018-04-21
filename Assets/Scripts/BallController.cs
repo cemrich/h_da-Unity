@@ -23,4 +23,10 @@ public class BallController : MonoBehaviour
         Vector3 movement = new Vector3(horizontal, 0, vertical);
         rigidbody.AddForce(movement * speed);
     }
+
+    // Called by Unity when a trigger collider enters
+    void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.SetActive(false);
+    }
 }
