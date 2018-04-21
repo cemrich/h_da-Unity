@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallController : MonoBehaviour
 {
+    public Text pointsText;
     public float speed;
 
+    private int points = 0;
     private Rigidbody rigidbody;
 
     // Use this for initialization
@@ -28,5 +31,13 @@ public class BallController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         other.gameObject.SetActive(false);
+        points++;
+
+        pointsText.text = "Punkte: " + points;
+
+        if (points == 10)
+        {
+            pointsText.text = "Gewonnen!";
+        }
     }
 }
