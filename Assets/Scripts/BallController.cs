@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    public TextMeshProUGUI pointsText;
+
     [Range(1, 5)]
     public float speed;
 
+    private int points = 0;
     private Rigidbody rigidbody;
 
     // Start is called before the first frame update
@@ -29,5 +33,13 @@ public class BallController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.gameObject.SetActive(false);
+        points++;
+
+        pointsText.text = points + " Points";
+
+        if (points == 10)
+        {
+            pointsText.text = "You win!";
+        }
     }
 }
