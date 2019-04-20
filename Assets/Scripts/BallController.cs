@@ -32,7 +32,7 @@ public class BallController : MonoBehaviour
     // Called by Unity when a trigger collider enters
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.SetActive(false);
+        other.GetComponent<Pickup>().PickUp();
         points++;
 
         pointsText.text = points + " Points";
