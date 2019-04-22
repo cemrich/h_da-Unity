@@ -6,6 +6,7 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public TextMeshProUGUI pointsText;
+    public GameObject youWinText;
     public AudioSource pointAudio;
     public AudioSource wonAudio;
     public AudioSource collisionAudio;
@@ -45,7 +46,7 @@ public class BallController : MonoBehaviour
         if (points == 10)
         {
             wonAudio.Play();
-            pointsText.text = "You win!";
+            youWinText.SetActive(true);
         }
     }
 
