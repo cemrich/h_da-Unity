@@ -6,6 +6,9 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public TextMeshProUGUI pointsText;
+    public AudioSource pointAudio;
+    public AudioSource wonAudio;
+    public AudioSource collisionAudio;
 
     [Range(1, 5)]
     public float speed;
@@ -35,11 +38,19 @@ public class BallController : MonoBehaviour
         other.GetComponent<Pickup>().PickUp();
         points++;
 
+        pointAudio.Play();
+
         pointsText.text = points + " Points";
 
         if (points == 10)
         {
+            wonAudio.Play();
             pointsText.text = "You win!";
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        collisionAudio.Play();
     }
 }
